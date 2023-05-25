@@ -8,12 +8,12 @@ User = get_user_model()
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'author_link', 'created', 'status']
-    list_filter = ['status', 'created', 'published', 'author']
+    list_filter = ['status', 'created', 'publish', 'author']
     search_fields = ['title', 'author']
     prepopulated_fields = {'slug': ('title',)}
     raw_id_fields = ['author']
-    date_hierarchy = 'published'
-    ordering = ['status', 'published']
+    date_hierarchy = 'publish'
+    ordering = ['status', 'publish']
     autocomplete_fields = ('author',)
 
     def author_link(self, obj):
