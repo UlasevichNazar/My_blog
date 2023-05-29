@@ -4,9 +4,9 @@ My Blog
 {% endblock %}
 {% block content %}
 <h1>My Blog</h1>
-{% for p in post %}
+{% for p in posts %}
 <h2>
-    <a href="{% url 'blog:post_detail' p.id %}">
+    <a href="{{ p.get_absolute_url}}">
         {{p.title}}
     </a>
 </h2>
@@ -15,4 +15,5 @@ My Blog
 </p>
 {{p.body|truncatewords:30|linebreaks}}
 {% endfor %}
+{% include 'pagination.html' with page=posts%}
 {% endblock %}
